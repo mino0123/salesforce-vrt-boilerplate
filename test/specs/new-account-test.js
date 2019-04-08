@@ -1,0 +1,22 @@
+
+describe('Browser test', () => {
+    it('new cccount page', async () => {
+        // login
+        await browser.url(`https://login.salesforce.com?un=${encodeURIComponent(process.env.SF_USERNAME)}&pw=${process.env.SF_PASSWORD}&startURL=${encodeURIComponent('/s.gif')}`);
+        // get instance url
+        const instanceUrl = await browser.execute(() => {
+            return location.protocol + '//' + location.hostname;
+        });
+        // open new account page
+        await browser.url(`${instanceUrl}/lightning/o/Account/new`);
+        await browser.pause(5e3);
+        await browser.execute(() => {
+            var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0]
+            nameEl.value = 'Test Account';
+            nameEl.dispatchEvent(new Event('change'));
+            document.querySelector(`.slds-modal__footer .uiButton--brand`).click();
+        });
+        await browser.pause(5e3);
+        await browser.saveScreenshot(`./test/screenshots/account-save-end.png`);
+    });
+});
