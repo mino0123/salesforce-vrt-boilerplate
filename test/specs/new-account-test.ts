@@ -1,3 +1,7 @@
+import { equal, AssertionError } from "assert";
+import { outputFile } from "fs-extra";
+import { ImageCompare } from "./ImageCompare";
+
 declare var browser;
 
 describe('Browser test', () => {
@@ -20,6 +24,6 @@ describe('Browser test', () => {
             return {};
         });
         await browser.pause(5e3);
-        await browser.saveScreenshot(`./test/screenshots/account-save-end.png`);
+        ImageCompare.compare(browser, `account-save-end.png`);
     });
 });
