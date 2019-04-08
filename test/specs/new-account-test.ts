@@ -1,3 +1,4 @@
+declare var browser;
 
 describe('Browser test', () => {
     it('new cccount page', async () => {
@@ -11,10 +12,12 @@ describe('Browser test', () => {
         await browser.url(`${instanceUrl}/lightning/o/Account/new`);
         await browser.pause(5e3);
         await browser.execute(() => {
-            var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0]
+            var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0] as any;
             nameEl.value = 'Test Account';
             nameEl.dispatchEvent(new Event('change'));
-            document.querySelector(`.slds-modal__footer .uiButton--brand`).click();
+            var saveBtnEl = document.querySelector(`.slds-modal__footer .uiButton--brand`) as any;
+            saveBtnEl.click();
+            return {};
         });
         await browser.pause(5e3);
         await browser.saveScreenshot(`./test/screenshots/account-save-end.png`);
