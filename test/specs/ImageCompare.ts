@@ -51,7 +51,7 @@ export class ImageCompare {
 
     static async assert(compareData, diffPath) {
         const misMatchPercentage = Number(compareData.misMatchPercentage);
-        if (misMatchPercentage > 0.1) {
+        if (misMatchPercentage > ImageCompare.tolerance) {
             throw new AssertionError({message: `Screenshot is mismatch: ${diffPath}`});
         }
     }
