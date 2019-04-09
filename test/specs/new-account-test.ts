@@ -1,5 +1,3 @@
-import { equal, AssertionError } from "assert";
-import { outputFile } from "fs-extra";
 import { ImageCompare } from "./ImageCompare";
 
 declare var browser;
