@@ -15,14 +15,14 @@ export class ImageCompare {
         const actual = path.resolve(ACTUAL_BASE, testname);
         const expected = path.resolve(EXPECTED_BASE, testname);
         const diff = path.resolve(DIFF_BASE, testname);
-        browser.saveScreenshot(actual);
+        await browser.saveScreenshot(actual);
         const compareData = await ImageCompare.compareFiles(actual, expected);
         await ImageCompare.writeDiffFile(compareData, diff);
         ImageCompare.assert(compareData, diff);
     }
 
     static async compareFiles(actual, expected) {
-        return new Promise((resolve) => {
+        return await new Promise((resolve) => {
             const image = resemble(actual).compareTo(expected);
             image.onComplete((data) => {
                 resolve(data);
@@ -32,7 +32,7 @@ export class ImageCompare {
 
     static async writeDiffFile(compareData, filepath) {
         const image = compareData.getDiffImage().pack();
-        return new Promise((resolve, reject) => {
+        return await new Promise((resolve, reject) => {
             const chunks = [];
             image.on('data', function(chunk) {
                 chunks.push(chunk);
