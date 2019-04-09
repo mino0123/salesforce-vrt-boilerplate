@@ -30,3 +30,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm test
+
+      - store_artifacts:
+          path: test/screenshots
+          destination: screenshots
+

@@ -2,6 +2,7 @@ import * as path from "path";
 import { outputFile } from "fs-extra";
 import * as resemble from "node-resemble-js";
 import { AssertionError } from "assert";
+import { fstat, writeFileSync } from "fs";
 
 const BASEPATH = `./test/screenshots`;
 const ACTUAL_BASE = `${BASEPATH}/actual`;
