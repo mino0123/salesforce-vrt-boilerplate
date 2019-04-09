@@ -6,7 +6,7 @@ import { AssertionError } from "assert";
 const BASEPATH = `./test/screenshots`;
 const ACTUAL_BASE = `${BASEPATH}/actual`;
 const EXPECTED_BASE = `${BASEPATH}/expected`;
-const DIFF_BASE = `${BASEPATH}/actual`;
+const DIFF_BASE = `${BASEPATH}/diff`;
 
 export class ImageCompare {
     static tolerance = 0.1;
