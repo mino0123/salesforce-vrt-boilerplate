@@ -6,7 +6,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:10-browsers
+      # - image: circleci/node:8.10
+      # - image: circleci/openjdk:8-jdk
+      # - image: selenium/standalone-chrome:3.141.59-mercury
 
     working_directory: ~/repo
 
