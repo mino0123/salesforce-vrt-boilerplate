@@ -60,6 +60,8 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
+    }, {
+        browserName: 'firefox'
     }],
     //
     // ===================
