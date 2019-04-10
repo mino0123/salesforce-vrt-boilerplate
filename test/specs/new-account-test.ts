@@ -3,7 +3,7 @@ import { ImageCompare } from "./ImageCompare";
 declare var browser;
 
 describe('Browser test', () => {
-    it('new cccount page', async () => {
+    it('new Account page', async () => {
         // login
         await browser.url(`https://login.salesforce.com?un=${encodeURIComponent(process.env.SF_USERNAME)}&pw=${process.env.SF_PASSWORD}&startURL=${encodeURIComponent('/s.gif')}`);
         // get instance url
