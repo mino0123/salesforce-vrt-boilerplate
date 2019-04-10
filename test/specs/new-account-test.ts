@@ -11,11 +11,12 @@ describe('Browser test', () => {
         const instanceUrl = await browser.execute(() => {
             return location.protocol + '//' + location.hostname;
         });
+        await browser.pause(3e3);
         // open new account page
         await browser.url(`${instanceUrl}/lightning/o/Account/new`);
         await browser.pause(5e3);
         await browser.waitUntil(() => {
-            return $('*[aria-required=true]');
+            return $('*[aria-required=true]') && $('.slds-modal__footer .uiButton--brand');
         });
         await browser.execute(() => {
             var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0] as any;
