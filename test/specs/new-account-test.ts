@@ -1,6 +1,7 @@
 import { ImageCompare } from "./ImageCompare";
 
 declare var browser;
+declare var $;
 
 describe('Browser test', () => {
     it('new Account page', async () => {
@@ -13,6 +14,9 @@ describe('Browser test', () => {
         // open new account page
         await browser.url(`${instanceUrl}/lightning/o/Account/new`);
         await browser.pause(5e3);
+        await browser.waitUntil(() => {
+            return $('*[aria-required=true]');
+        });
         await browser.execute(() => {
             var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0] as any;
             nameEl.value = 'Test Account';
