@@ -14,6 +14,12 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - run: |
+          # 日本語フォントをインストールする
+          sudo apt -qqy --no-install-recommends install -y fonts-takao-gothic fonts-takao-mincho &&
+          sudo dpkg-reconfigure --frontend noninteractive locales &&
+          sudo fc-cache -fv
+
       - checkout
 
       - restore_cache:
