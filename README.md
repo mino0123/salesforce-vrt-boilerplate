@@ -1,2 +1,2 @@
-# salesforce-wdio
-Boilerplate testing pages in Salesforce with WebdriverIO
+# salesforce-vrt-boilerplate
+Boilerplate virual regression testing for Salesforce with WebdriverIO
