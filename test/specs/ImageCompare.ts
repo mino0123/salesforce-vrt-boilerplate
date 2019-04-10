@@ -15,7 +15,7 @@ export class ImageCompare {
         const actual = path.resolve(ACTUAL_BASE, testname);
         const expected = path.resolve(EXPECTED_BASE, testname);
         const diff = path.resolve(DIFF_BASE, testname);
-        await browser.saveScreenshot(actual);
+        await browser.saveDocumentScreenshot(actual);
         const compareData = await ImageCompare.compareFiles(actual, expected);
         await ImageCompare.writeDiffFile(compareData, diff);
         ImageCompare.assert(compareData, diff);

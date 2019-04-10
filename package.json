@@ -15,6 +15,7 @@
     "node-resemble-js": "^0.2.0",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.2",
+    "wdio-screenshot-v5": "^1.0.0",
     "webdriverio": "^5.7.9"
   }
 }
