@@ -13,9 +13,12 @@ export class ImageCompare {
     static tolerance = 0.1;
 
     static async compare(browser, testname) {
-        const actual = path.resolve(ACTUAL_BASE, testname);
-        const expected = path.resolve(EXPECTED_BASE, testname);
-        const diff = path.resolve(DIFF_BASE, testname);
+        const browserName = browser.capabilities.browserName;
+        const filename = `${testname}_${browserName}.png`;
+        const actual = path.resolve(ACTUAL_BASE, filename);
+        const expected = path.resolve(EXPECTED_BASE, filename);
+        const diff = path.resolve(DIFF_BASE, filename);
+        
         await browser.saveDocumentScreenshot(actual);
         const compareData = await ImageCompare.compareFiles(actual, expected);
         await ImageCompare.writeDiffFile(compareData, diff);

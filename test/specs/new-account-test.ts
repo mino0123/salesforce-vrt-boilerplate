@@ -26,6 +26,6 @@ describe('Browser test', () => {
             return {};
         });
         await browser.pause(3e3);
-        await ImageCompare.compare(browser, `account-save-end.png`);
+        await ImageCompare.compare(browser, `account-save-end`);
     });
 });
