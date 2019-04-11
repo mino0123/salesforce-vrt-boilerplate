@@ -9,7 +9,6 @@ const EXPECTED_BASE = `${BASEPATH}/expected`;
 const DIFF_BASE = `${BASEPATH}/diff`;
 
 export class ImageCompare {
-    static tolerance = 0.1;
 
     static async compare(browser, testname) {
         const browserName = browser.capabilities.browserName;
@@ -54,7 +53,7 @@ export class ImageCompare {
 
     static async assert(compareData, diffPath) {
         const misMatchPercentage = Number(compareData.misMatchPercentage);
-        if (misMatchPercentage > ImageCompare.tolerance) {
+        if (misMatchPercentage > 0) {
             throw new AssertionError({message: `Screenshot is mismatch ${misMatchPercentage}% : ${diffPath}`});
         }
     }
