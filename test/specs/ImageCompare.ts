@@ -20,7 +20,7 @@ export class ImageCompare {
         await browser.saveDocumentScreenshot(actual);
         const compareData = await ImageCompare.compareFiles(actual, expected);
         await ImageCompare.writeDiffFile(compareData, diff);
-        ImageCompare.assert(compareData, diff);
+        await ImageCompare.assert(compareData, diff);
     }
 
     static async compareFiles(actual, expected) {
