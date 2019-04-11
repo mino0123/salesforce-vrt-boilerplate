@@ -20,7 +20,7 @@ export class ImageCompare {
         await browser.saveDocumentScreenshot(actual);
         const compareData = await ImageCompare.compareFiles(actual, expected);
         await ImageCompare.writeDiffFile(compareData, diff);
-        await ImageCompare.assert(compareData, diff);
+        ImageCompare.assert(compareData, diff);
     }
 
     static async compareFiles(actual, expected) {
@@ -51,7 +51,7 @@ export class ImageCompare {
         });
     }
 
-    static async assert(compareData, diffPath) {
+    static assert(compareData, diffPath) {
         const misMatchPercentage = Number(compareData.misMatchPercentage);
         if (misMatchPercentage > 0) {
             throw new AssertionError({message: `Screenshot is mismatch ${misMatchPercentage}% : ${diffPath}`});
