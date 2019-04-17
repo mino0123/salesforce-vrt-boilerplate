@@ -34,4 +34,14 @@ workflows:
   normal_test_workflow:
     jobs:
       - vrt
+  nightly_workflow:
+    triggers:
+      - schedule:
+          cron: "0 1 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vrt
 
