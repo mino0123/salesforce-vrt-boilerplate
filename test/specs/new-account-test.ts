@@ -26,7 +26,7 @@ describe('Browser test', () => {
             saveBtnEl.click();
             return {};
         });
-        await browser.pause(3e3);
+        await browser.pause(5e3);
         await ImageCompare.compare(browser, `account-save-end`);
     });
 });
