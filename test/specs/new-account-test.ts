@@ -16,13 +16,13 @@ describe('Browser test', () => {
         await browser.url(`${instanceUrl}/lightning/o/Account/new`);
         await browser.pause(5e3);
         await browser.waitUntil(() => {
-            return $('*[aria-required=true]') && $('.slds-modal__footer .uiButton--brand');
+            return $('*[aria-required=true]') && $('.slds-modal .uiButton--brand');
         });
         await browser.execute(() => {
             var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0] as any;
             nameEl.value = 'Test Account';
             nameEl.dispatchEvent(new Event('change'));
-            var saveBtnEl = document.querySelector(`.slds-modal__footer .uiButton--brand`) as any;
+            var saveBtnEl = document.querySelector(`.slds-modal .uiButton--brand`) as any;
             saveBtnEl.click();
             return {};
         });
