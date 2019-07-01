@@ -2,6 +2,18 @@ import { ImageCompare } from "./ImageCompare";
 
 declare var browser;
 declare var $;
+declare var $A;
+
+async function waitPageLoaded() {
+    await browser.executeAsync((done) => {
+        $A.eventService.addHandlerOnce({
+            handler: () => {
+                done();
+            },
+            event: "force:pageLoaded"
+        });
+    });
+}
 
 describe('Browser test', () => {
     it('new Account page', async () => {
@@ -26,7 +38,8 @@ describe('Browser test', () => {
             saveBtnEl.click();
             return {};
         });
-        await browser.pause(5e3);
+        await waitPageLoaded();
+        await browser.pause(5e3);// 結局pageLoadedだと早すぎた。
         await ImageCompare.compare(browser, `account-save-end`);
     });
 });
