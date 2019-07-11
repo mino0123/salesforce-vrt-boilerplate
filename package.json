@@ -7,17 +7,17 @@
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
-    "@wdio/cli": "^5.10.0",
-    "@wdio/local-runner": "^5.10.0",
-    "@wdio/mocha-framework": "^5.9.4",
-    "@wdio/selenium-standalone-service": "^5.9.3",
-    "@wdio/spec-reporter": "^5.9.3",
+    "@wdio/cli": "^5.11.1",
+    "@wdio/local-runner": "^5.11.1",
+    "@wdio/mocha-framework": "^5.11.0",
+    "@wdio/selenium-standalone-service": "^5.11.0",
+    "@wdio/spec-reporter": "^5.11.0",
     "dotenv": "^8.0.0",
-    "fs-extra": "^8.0.1",
+    "fs-extra": "^8.1.0",
     "node-resemble-js": "^0.2.0",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.5.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3",
     "wdio-screenshot-v5": "^1.0.0",
-    "webdriverio": "^5.10.0"
+    "webdriverio": "^5.11.1"
   }
 }
