@@ -14,6 +14,7 @@ exports.config = {
         browserName: 'firefox'
     }],
     logLevel: 'error',
+    specFileRetries: 2,
     waitforTimeout: 10000,
     services: ['selenium-standalone', [WdioScreenshot]],
     framework: 'mocha',
