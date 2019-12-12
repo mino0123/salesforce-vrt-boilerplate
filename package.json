@@ -18,6 +18,7 @@
     "node-resemble-js": "^0.2.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.6.2",
+    "wdio-iedriver-service": "^0.1.0",
     "wdio-screenshot-v5": "^1.0.0",
     "webdriverio": "^5.12.5"
   }

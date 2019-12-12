@@ -1,0 +1,103 @@
+name: xbrowser
+
+on: [push]
+
+jobs:
+  # https://tech.mercari.com/entry/2019/08/27/080000
+  # https://www.microfocus.com/documentation/silk-test/195/ja/silk4net-195-help-ja/GUID-884BF97A-44A9-4CE3-A458-027D16EB6AE3.html
+  # vrt-edge:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: warrenbuckley/Setup-Nuget@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
+  #     - run: npm install
+  #     - run: npm test
+  #       env:
+  #         SF_USERNAME: ${{ secrets.SF_USERNAME }}
+  #         SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+  #         BROWSER: edge
+  #     - uses: actions/upload-artifact@master
+  #       if: always()
+  #       with:
+  #         name: test-screenshots
+  #         path: test/screenshots
+  # http://v4.webdriver.io/guide/services/iedriver.html
+  vrt-ie:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm test
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          BROWSER: "internet explorer"
+      - uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: test-screenshots
+          path: test/screenshots
+  vrt-safari:
+    # https://twitter.com/hiroshitoda/status/1194429606280876032
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - name: Run safari driver
+        run: |
+          sudo safaridriver --enable & safaridriver -p 0 &
+      - run: npm test
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          BROWSER: safari
+      - uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: test-screenshots
+          path: test/screenshots
+  vrt-chrome:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm test
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          BROWSER: chrome
+      - uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: test-screenshots
+          path: test/screenshots
+  vrt-firefox:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm test
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          BROWSER: firefox
+      - uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: test-screenshots
+          path: test/screenshots

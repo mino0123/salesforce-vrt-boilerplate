@@ -24,12 +24,15 @@ describe('Browser test', () => {
             return location.protocol + '//' + location.hostname;
         });
         await browser.pause(3e3);
+        await browser.saveDocumentScreenshot(`./test/screenshots/1_${browser.capabilities.browserName}.png`);
         // open new account page
         await browser.url(`${instanceUrl}/lightning/o/Account/new`);
-        await browser.pause(5e3);
+        await browser.pause(15e3);
+        await browser.saveDocumentScreenshot(`./test/screenshots/2_${browser.capabilities.browserName}.png`);
         await browser.waitUntil(() => {
             return $('*[aria-required=true]') && $('.slds-modal .uiButton--brand');
         });
+        await browser.saveDocumentScreenshot(`./test/screenshots/2.png`);
         await browser.execute(() => {
             var nameEl = document.querySelectorAll(`*[aria-required=true]`)[0] as any;
             nameEl.value = 'Test Account';

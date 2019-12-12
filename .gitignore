@@ -2,5 +2,6 @@
 !.gitignore
 !.gitkeep
 !.circleci
+!.github
 
 node_modules
