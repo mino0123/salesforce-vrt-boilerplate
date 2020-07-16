@@ -14,7 +14,7 @@
     "@wdio/spec-reporter": "^5.12.1",
     "dotenv": "^8.1.0",
     "fs-extra": "^8.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "node-resemble-js": "^0.2.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.6.2",
